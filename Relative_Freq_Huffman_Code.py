@@ -64,7 +64,7 @@ def main():
     print("------  --------  -----------")
 
     for letter in unique_letters:
-        print(f"  {letter}\t  {codes[letter]}\t    {unique_letters_probabilities[letter]}")
+        print(f"  {letter}\t  {codes[letter]}\t    {unique_letters_probabilities[letter]:.5f}")
 
 if __name__ == "__main__":
     main()
