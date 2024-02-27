@@ -38,12 +38,12 @@ def main():
     num_symbols = int(input("Enter the number of symbols: "))
     symbols = [f"x_{i+1}" for i in range(num_symbols)]
     probabilities = []
+    
     for i in range(num_symbols):
         prob = float(input(f"Enter the probability for symbol {symbols[i]}: "))
         probabilities.append(prob)
 
     codes = huffman_coding(symbols, probabilities)
-
     sorted_codes = sorted(codes.items(), key=lambda x: (len(x[1]), x[1], probabilities[symbols.index(x[0])]))
 
     print("\nSymbol\tCode")
