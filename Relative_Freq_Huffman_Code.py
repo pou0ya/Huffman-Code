@@ -46,7 +46,6 @@ def main():
 
     text = input("Enter the text to encode: ").lower()
 
-    # Calculate letter frequencies
     letter_freq = {}
     for letter in text:
         if letter in letter_freq:
@@ -54,11 +53,9 @@ def main():
         else:
             letter_freq[letter] = 1
 
-    # Update probabilities based on letter frequencies
     total_letters = sum(letter_freq.values())
     updated_probabilities = {letter: letter_probabilities[letter] * freq / total_letters for letter, freq in letter_freq.items()}
 
-    # Generate Huffman codes
     unique_letters = list(letter_freq.keys())
     codes = huffman_coding(unique_letters, [updated_probabilities[letter] for letter in unique_letters])
     encoded_text = ''.join([codes[letter] for letter in text])
