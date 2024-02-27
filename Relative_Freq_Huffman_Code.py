@@ -24,7 +24,6 @@ def huffman_coding(symbols, probabilities):
     def traverse(node, code):
         if node is None:
             return
-        
         if node.symbol is not None:
             codes[node.symbol] = code
             return
