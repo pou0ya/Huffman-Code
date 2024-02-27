@@ -46,18 +46,17 @@ def main():
 
     text = input("Enter the text to encode: ").lower()
 
-    letter_freq = {}
+    unique_letters_probabilities = {}
+
     for letter in text:
-        if letter in letter_freq:
-            letter_freq[letter] += 1
+        if letter not in unique_letters_probabilities:
+            unique_letters_probabilities[letter] = letter_probabilities[letter]
         else:
-            letter_freq[letter] = 1
+            unique_letters_probabilities[letter] += letter_probabilities[letter]
 
-    total_letters = sum(letter_freq.values())
-    updated_probabilities = {letter: letter_probabilities[letter] * freq / total_letters for letter, freq in letter_freq.items()}
-
-    unique_letters = list(letter_freq.keys())
-    codes = huffman_coding(unique_letters, [updated_probabilities[letter] for letter in unique_letters])
+    unique_letters = list(unique_letters_probabilities.keys())
+    probabilities = [unique_letters_probabilities[letter] for letter in unique_letters]
+    codes = huffman_coding(unique_letters, probabilities)
     encoded_text = ''.join([codes[letter] for letter in text])
 
     print("\nEncoded text:", encoded_text, "\n")
@@ -65,8 +64,7 @@ def main():
     print("------  --------  -----------")
 
     for letter in unique_letters:
-        probability_formatted = "{:.5f}".format(updated_probabilities[letter])
-        print(f"  {letter}\t  {codes[letter]}\t    {probability_formatted}")
+        print(f"  {letter}\t  {codes[letter]}\t    {unique_letters_probabilities[letter]}")
 
 if __name__ == "__main__":
     main()
