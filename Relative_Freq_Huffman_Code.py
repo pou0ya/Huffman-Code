@@ -28,8 +28,8 @@ def huffman_coding(symbols, probabilities):
             codes[node.symbol] = code
             return
 
-        traverse(node.left, code + "1")
-        traverse(node.right, code + "0")
+        traverse(node.left, code + "0")
+        traverse(node.right, code + "1")
 
     traverse(curr_node, curr_code)
     return codes
