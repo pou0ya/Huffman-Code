@@ -46,11 +46,11 @@ def main():
     codes = huffman_coding(symbols, probabilities)
     sorted_codes = sorted(codes.items(), key=lambda x: (len(x[1]), x[1], probabilities[symbols.index(x[0])]))
 
-    print("\nSymbol\tCode")
-    print("-------\t----")
+    print("\nSymbol\t Codeword")
+    print("------   --------")
     
     for symbol, code in sorted_codes:
-        print(f"{symbol}\t{code}")
+        print(f" {symbol}\t    {code}")
 
 if __name__ == "__main__":
     main()
